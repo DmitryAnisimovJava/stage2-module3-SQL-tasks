@@ -16,7 +16,7 @@ SELECT *
 FROM student
 ORDER BY name DESC;
 
-SELECT student.id, name, birthday, "group"
+SELECT student.id, name, birthday, groupnumber
 FROM student
          LEFT JOIN public.payment p ON student.id = p.student_id
 WHERE p.amount > 1000

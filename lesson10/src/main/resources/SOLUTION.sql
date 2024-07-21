@@ -6,7 +6,7 @@ FROM subject,
 WHERE id = groupAvg.subject_id
   AND groupAvg.average > allAvg.average;
 
-SELECT id, name, birthday, "group"
+SELECT id, name, birthday, groupnumber
 FROM student,
      (SELECT student_id, AVG(amount) OVER (PARTITION BY payment.student_id) AS average FROM payment) AS groupAvg,
      (SELECT AVG(amount) AS average FROM payment) AS allAvg
