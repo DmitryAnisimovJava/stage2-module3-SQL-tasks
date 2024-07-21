@@ -1,8 +1,6 @@
-ALTER TABLE student
-    ALTER COLUMN birthday SET NOT NULL;
+ALTER TABLE student ALTER COLUMN birthday SET NOT NULL;
 
-ALTER TABLE mark
-    ADD CONSTRAINT mark_constraint CHECK (mark >= 1 AND mark <= 10),
+ALTER TABLE mark ADD CONSTRAINT mark_constraint CHECK (mark >= 1 AND mark <= 10),
     ALTER COLUMN student_id SET NOT NULL,
     ALTER COLUMN subject_id SET NOT NULL;
 

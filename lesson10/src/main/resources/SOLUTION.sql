@@ -1,16 +1,15 @@
-SELECT DISTINCT id, name, description, grade
-FROM subject,
-     (SELECT subject_id, AVG(mark.mark) OVER (PARTITION BY subject_id) AS average
-      FROM mark) AS groupAvg,
-     (SELECT AVG(mark.mark) AS average FROM mark) AS allAvg
-WHERE id = groupAvg.subject_id
-  AND groupAvg.average > allAvg.average;
+SELECT DISTINCT s.id, s.name, s.description, s.grade FROM subject s JOIN (SELECT subject_id, AVG(mark) AS average FROM mark GROUP BY subject_id) AS groupAvg ON s.id = groupAvg.subject_id JOIN (SELECT AVG(mark) AS average FROM mark) AS allAvg WHERE groupAvg.average > allAvg.average;
 
-SELECT id, name, birthday, groupnumber
-FROM student,
-     (SELECT student_id, AVG(amount) OVER (PARTITION BY payment.student_id) AS average FROM payment) AS groupAvg,
-     (SELECT AVG(amount) AS average FROM payment) AS allAvg
-WHERE id = groupAvg.student_id
-  AND groupAvg.average < allAvg.average;
+SELECT DISTINCT s.id, s.name, s.birthday, s.groupNumber
+FROM student s
+         JOIN (
+    SELECT student_id, AVG(amount) AS average
+    FROM payment
+    GROUP BY student_id
+) AS groupAvg ON s.id = groupAvg.student_id
+         JOIN (
+    SELECT AVG(amount) AS average
+    FROM payment
+) AS allAvg WHERE groupAvg.average < allAvg.average;
 
 

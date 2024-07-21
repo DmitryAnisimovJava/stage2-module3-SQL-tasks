@@ -1,14 +1,8 @@
-SELECT MIN(birthday)
-FROM student;
+SELECT MAX(birthday) FROM student;
 
-SELECT MIN(payment_date)
-FROM payment;
+SELECT MIN(payment_date) FROM payment;
 
-SELECT AVG(mark.mark)
-FROM mark
-WHERE subject_id IN (SELECT id FROM subject WHERE name LIKE 'Math');
+SELECT AVG(mark) FROM mark WHERE subject_id IN (SELECT id FROM subject WHERE name LIKE 'Math');
 
-SELECT MIN(amount)
-FROM payment
-WHERE type_id = (SELECT id FROM paymenttype WHERE name LIKE 'WEEKLY');
+SELECT MIN(amount) FROM payment WHERE type_id = (SELECT id FROM paymenttype WHERE name LIKE 'WEEKLY');
 
