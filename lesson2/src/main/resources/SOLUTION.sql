@@ -1,5 +1,4 @@
-INSERT INTO student(name, birthday, groupNumber)
-VALUES ('John', '1997-07-01', 1),
+INSERT INTO student(name, birthday, groupNumber) VALUES ('John', '1997-07-01', 1),
        ('Chris', '1999-07-01', 1),
        ('Carl', '2000-07-01', 1),
        ('Oliver', '2001-06-01', 2),
@@ -14,8 +13,7 @@ VALUES ('John', '1997-07-01', 1),
        ('Ross', '2001-06-01', 5),
        ('Alexander', '2001-06-01', 5);
 
-INSERT INTO subject(name, description, grade)
-VALUES ('Art', 'desc1', 1),
+INSERT INTO subject(name, description, grade) VALUES ('Art', 'desc1', 1),
        ('Music', 'desc1', 1),
        ('Geography', 'desc2', 2),
        ('History', 'desc2', 2),
@@ -26,21 +24,15 @@ VALUES ('Art', 'desc1', 1),
        ('Subject1', 'desc5', 5),
        ('Subject2', 'desc6', 5);
 
-INSERT INTO paymentType(name)
-VALUES ('DAILY'),
-       ('WEEKLY'),
-       ('MONTHLY');
+INSERT INTO paymentType(name) VALUES ('DAILY'), ('WEEKLY'), ('MONTHLY');
 
-INSERT INTO payment(type_id, amount, student_id, payment_date)
-VALUES (2, 1000, 1, NOW()),
-       (3, 1000, 4, NOW()),
+INSERT INTO payment(type_id, amount, student_id, payment_date) VALUES (2, 1000, 1, NOW()), (3, 1000, 4, NOW()),
        (2, 1000, 7, NOW()),
        (1, 1000, 5, NOW()),
        (3, 10000, 2, NOW()),
        (2, 1000, 10, NOW());
 
-INSERT INTO mark(student_id, subject_id, mark)
-VALUES (2, 1, 8),
+INSERT INTO mark(student_id, subject_id, mark) VALUES (2, 1, 8),
        (4, 4, 5),
        (5, 3, 9),
        (8, 6, 4),
