@@ -1,41 +1,41 @@
 CREATE TABLE student
 (
-    id          BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name        VARCHAR(45),
-    birthday    DATE NOT NULL,
-    groupNumber INT  NOT NULL
+    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(45),
+    birthday DATE NOT NULL,
+    groupnumber INT NOT NULL
 );
-
 CREATE TABLE subject
 (
-    id          BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name        VARCHAR(250) NOT NULL,
-    description VARCHAR(250),
-    grade       INT          NOT NULL
+    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(250),
+    description VARCHAR(255),
+    grade int NOT NULL
 );
 
 CREATE TABLE mark
 (
-    id         BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     student_id BIGINT,
     subject_id BIGINT,
-    mark       INT NOT NULL,
-    FOREIGN KEY (student_id) REFERENCES student(id) ON DELETE CASCADE,
-    FOREIGN KEY (subject_id) REFERENCES subject(id) ON DELETE CASCADE
+    mark INT NOT NULL,
+    foreign key (student_id) references student(id),
+    foreign key (subject_id) references subject(id)
 );
 
-CREATE TABLE paymentType
+CREATE TABLE paymenttype
 (
-    id   BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(45)
 );
 
 CREATE TABLE payment
 (
-    id           BIGINT AUTO_INCREMENT PRIMARY KEY,
-    type_id      BIGINT    NOT NULL,
-    amount       DECIMAL   NOT NULL,
-    student_id   BIGINT    NOT NULL,
-    payment_date TIMESTAMP NOT NULL,
-    FOREIGN KEY (type_id) REFERENCES paymentType(id) ON DELETE CASCADE,
-    FOREIGN KEY (student_id) REFERENCES student(id) ON DELETE CAS
+    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    type_id BIGINT NOT NULL,
+    amount decimal NOT NULL,
+    payment_date TIMESTAMP  NOT NULL,
+    student_id BIGINT NOT NULL,
+    foreign key (type_id) references paymenttype(id),
+    foreign key (student_id) references student(id)
+);
